@@ -8,8 +8,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="wall1" type="Sprite" parent="." index="0"]
 
-scale = Vector2( 0.0693359, 0.0693359 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -64 )
 region_enabled = true
 region_rect = Rect2( 7392, 0, 112, 132 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
@@ -30,12 +30,28 @@ __meta__ = {
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall1/StaticBody2D" index="0"]
 
-position = Vector2( -0.144225, 0 )
+position = Vector2( 0.61, -62.8 )
 build_mode = 0
 polygon = PoolVector2Array( -55.8152, 30.2873, 0.288451, 63.4592, 55.8152, 30.2873, 0.288451, -1.44225 )
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="floor1" type="Sprite" parent="." index="1"]
+
+position = Vector2( 144.25, 1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 7126, 0, 112, 132 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
+
+[node name="floor2" type="Sprite" parent="." index="2"]
+
+position = Vector2( 144.25, 1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 7126, 0, 112, 132 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
 
