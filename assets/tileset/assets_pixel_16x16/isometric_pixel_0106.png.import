@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/isometric_pixel_0106.png-2199e4d8a789cb0382ac04f2f7097318.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
@@ -14,6 +17,7 @@ dest_files=[ "res://.import/isometric_pixel_0106.png-2199e4d8a789cb0382ac04f2f70
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -23,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true
