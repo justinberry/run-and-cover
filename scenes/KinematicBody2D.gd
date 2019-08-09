@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const MOTION_SPEED = 260 # Pixels/second
 const MOUSE_DEBUG_LABEL = '/root/Main/UI/MarginContainer/VBoxContainer/MouseXY'
+const ISOMETRIC_X_OFFSET = 1.75
 
 class Movement:
   func is_moving():
@@ -67,7 +68,7 @@ class RightUpMovement extends Movement:
     )
   
   func get_motion():
-    return RightMovement._MOTION + UpMovement._MOTION
+    return (RightMovement._MOTION * ISOMETRIC_X_OFFSET) + UpMovement._MOTION
   
   func get_animation():
     return 'WalkRightUp'
@@ -81,7 +82,7 @@ class LeftUpMovement extends Movement:
     )
   
   func get_motion():
-    return LeftMovement._MOTION + UpMovement._MOTION
+    return (LeftMovement._MOTION * ISOMETRIC_X_OFFSET) + UpMovement._MOTION
   
   func get_animation():
     return 'WalkLeftUp'
@@ -95,7 +96,7 @@ class LeftDownMovement extends Movement:
     )
   
   func get_motion():
-    return LeftMovement._MOTION + DownMovement._MOTION
+    return (LeftMovement._MOTION * ISOMETRIC_X_OFFSET) + DownMovement._MOTION
   
   func get_animation():
     return 'WalkLeftDown'
@@ -109,7 +110,7 @@ class RightDownMovement extends Movement:
     )
   
   func get_motion():
-    return RightMovement._MOTION + DownMovement._MOTION
+    return (RightMovement._MOTION * ISOMETRIC_X_OFFSET) + DownMovement._MOTION
   
   func get_animation():
     return 'WalkRightDown'
@@ -142,17 +143,16 @@ func _movement_factory():
   
   return IdleMovement.new()
       
-func _update_movement(delta):
-  var motion = Vector2()
+func _update_movement(_delta):
   var walk_anim = get_node('Sprite/AnimationPlayer')
   
   var movement = _movement_factory()
-
-  motion = movement.get_motion()
+  var motion = movement.get_motion()
   walk_anim.play(movement.get_animation())
-
   motion = motion.normalized() * MOTION_SPEED
-  move_and_slide(motion)
+  if Input.is_key_pressed(KEY_SHIFT):
+    motion *= 1.5
+  return move_and_slide(motion)
 
 func _triangle_vectors_around(point):
   return [
@@ -175,7 +175,7 @@ func _draw_aim():
 func _draw():
   _draw_aim()
 
-func _input(event):
+func _input(_event):
   self.update()
 
 func _physics_process(delta):
