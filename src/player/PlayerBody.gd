@@ -20,7 +20,7 @@ var animator = preload('./StatefulAnimator.gd').new()
 func _movement_factory():  
   for m in MOVEMENTS:
     if m.is_moving():
-      return m
+      return m  
   
   return IDLE_MOVEMEMENT
       
