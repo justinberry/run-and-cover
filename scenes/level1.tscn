@@ -432,7 +432,9 @@ scale = Vector2( 0.656636, 0.90909 )
 texture = ExtResource( 7 )
 vframes = 2
 hframes = 24
+frame = 30
 region_rect = Rect2( -48.125, -14.375, 2116.12, 394.875 )
+_sections_unfolded = [ "Animation", "Region" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -454,6 +456,7 @@ anims/WalkRightDown = SubResource( 7 )
 anims/WalkRightUp = SubResource( 8 )
 anims/WalkUp = SubResource( 9 )
 blend_times = [  ]
+_sections_unfolded = [ "Pause", "Playback Options" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/WallFg/Player" index="1"]
 

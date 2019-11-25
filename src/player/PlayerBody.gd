@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 const MOTION_SPEED = 260 # Pixels/second
-const MOUSE_DEBUG_LABEL = '/root/Main/UI/MarginContainer/VBoxContainer/MouseXY'
 
 var MOVEMENTS = [
   preload('movement/LeftUpMovement.gd').new(),
@@ -16,6 +15,8 @@ var MOVEMENTS = [
 
 var IDLE_MOVEMEMENT = preload('movement/IdleMovement.gd').new()
 
+var animator = preload('./StatefulAnimator.gd').new()
+
 func _movement_factory():  
   for m in MOVEMENTS:
     if m.is_moving():
@@ -23,13 +24,14 @@ func _movement_factory():
   
   return IDLE_MOVEMEMENT
       
-func _update_movement(_delta):
-  var walk_anim = get_node('Sprite/AnimationPlayer')
-  
+func _update_movement(_delta):  
   var movement = _movement_factory()
-  print('got movement', movement)
-  var motion = movement.get_motion()
-  walk_anim.play(movement.get_animation())
+  var motion = movement.get_motion()  
+
+  var animation_player = get_node('Sprite/AnimationPlayer')
+  var current_animation = movement.get_animation()
+  animator.update_animation(animation_player, current_animation)
+
   motion = motion.normalized() * MOTION_SPEED
   if Input.is_key_pressed(KEY_SHIFT):
     motion *= 1.5
