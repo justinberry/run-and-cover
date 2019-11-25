@@ -24,24 +24,27 @@ func _movement_factory():
   
   return IDLE_MOVEMEMENT
       
-func _update_movement(_delta):  
-  var movement = _movement_factory()
+func _update_movement(movement):
   var motion = movement.get_motion()  
-
-  var animation_player = get_node('Sprite/AnimationPlayer')
-  var current_animation = movement.get_animation()
-  animator.update_animation(animation_player, current_animation)
 
   motion = motion.normalized() * MOTION_SPEED
   if Input.is_key_pressed(KEY_SHIFT):
     motion *= 1.5
   return move_and_slide(motion)
 
+func _update_animation(movement):
+  animator.update_animation(
+    get_node('Sprite/AnimationPlayer'),
+    movement.get_animation()
+  )
+
 func _input(_event):
   self.update()
 
-func _physics_process(delta):
-  _update_movement(delta)
+func _physics_process(_delta):
+  var movement = _movement_factory()
+  _update_animation(movement)
+  _update_movement(movement)
     
   
   
