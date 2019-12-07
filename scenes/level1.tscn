@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/PlayerXY.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MouseXY.gd" type="Script" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://tileset/tileset1.tres" type="TileSet" id=4]
 [ext_resource path="res://src/player/PlayerBody.gd" type="Script" id=5]
 [ext_resource path="res://assets/spaghetti_atlas.png" type="Texture" id=6]
-[ext_resource path="res://src/world/furniture/Chair.gd" type="Script" id=7]
-[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://scenes/CameraActions.gd" type="Script" id=7]
+[ext_resource path="res://src/world/furniture/Chair.gd" type="Script" id=8]
+[ext_resource path="res://icon.png" type="Texture" id=9]
 
 [sub_resource type="GDScript" id=1]
 
@@ -211,6 +212,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="UI" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -224,9 +226,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -294,7 +298,36 @@ __meta__ = {
 
 [node name="World" type="Node2D" parent="." index="1"]
 
-[node name="Lights" type="Node2D" parent="World" index="0"]
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Labels" type="Node2D" parent="World" index="0"]
+
+z_index = 999
+_sections_unfolded = [ "Z Index" ]
+
+[node name="DescriptionLabel" type="Label" parent="World/Labels" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 17.0
+margin_right = 135.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Lights" type="Node2D" parent="World" index="1"]
 
 editor/display_folded = true
 visible = false
@@ -378,7 +411,7 @@ shadow_item_cull_mask = 1
 
 color = Color( 1, 1, 1, 1 )
 
-[node name="Floor" type="TileMap" parent="World" index="1"]
+[node name="Floor" type="TileMap" parent="World" index="2"]
 
 mode = 1
 tile_set = ExtResource( 4 )
@@ -401,7 +434,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="WallFg" type="TileMap" parent="World" index="2"]
+[node name="WallFg" type="TileMap" parent="World" index="3"]
 
 z_index = 5
 mode = 1
@@ -487,10 +520,10 @@ limit_top = -10000000
 limit_right = 10000000
 limit_bottom = 10000000
 limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 17.0
 offset_v = 0.0
 offset_h = 0.0
 drag_margin_left = 0.2
@@ -500,22 +533,24 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+script = ExtResource( 7 )
+_sections_unfolded = [ "Drag Margin", "Editor", "Limit" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Pusher" type="StaticBody2D" parent="World" index="3"]
+[node name="Pusher" type="StaticBody2D" parent="World" index="4"]
 
 position = Vector2( 490, -60 )
-input_pickable = false
+input_pickable = true
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-script = ExtResource( 7 )
-_sections_unfolded = [ "Collision" ]
+script = ExtResource( 8 )
+_sections_unfolded = [ "Collision", "Pickable" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pusher" index="0"]
 
@@ -524,7 +559,10 @@ shape = SubResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="World/Pusher" index="1"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Pause" ]
+
+[connection signal="input_event" from="World/Pusher" to="World/Pusher" method="_on_Pusher_input_event"]
 
 [connection signal="mouse_entered" from="World/Pusher" to="World/Pusher" method="_on_Pusher_mouse_entered"]
 
