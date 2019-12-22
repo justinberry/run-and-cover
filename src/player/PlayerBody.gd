@@ -13,16 +13,18 @@ var MOVEMENTS = [
   preload('movement/RightMovement.gd').new()
 ]
 
-var IDLE_MOVEMEMENT = preload('movement/IdleMovement.gd').new()
+var IDLE_MOVEMENT = preload('movement/IdleMovement.gd').new()
 
 var animator = preload('./StatefulAnimator.gd').new()
+
+var current_movement = IDLE_MOVEMENT
 
 func _movement_factory():  
   for m in MOVEMENTS:
     if m.is_moving():
       return m  
   
-  return IDLE_MOVEMEMENT
+  return IDLE_MOVEMENT
       
 func _update_movement(movement):
   var motion = movement.get_motion()  
