@@ -13,9 +13,9 @@ var summary_label
 var hover_tween
 var click_tween
 
-func _init(target, dialog_resource):
-  self.target = target
-  self.dialog_resource = dialog_resource
+func _init(a_target, a_dialog_resource):
+  self.target = a_target
+  self.dialog_resource = a_dialog_resource
   self.hover_tween = Tween.new()
   self.click_tween = Tween.new()
 

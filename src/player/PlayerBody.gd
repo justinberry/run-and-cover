@@ -17,8 +17,6 @@ var IDLE_MOVEMENT = preload('movement/IdleMovement.gd').new()
 
 var animator = preload('./StatefulAnimator.gd').new()
 
-var current_movement = IDLE_MOVEMENT
-
 func _movement_factory():  
   for m in MOVEMENTS:
     if m.is_moving():

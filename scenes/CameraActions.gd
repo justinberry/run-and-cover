@@ -24,14 +24,14 @@ func is_within_upper_bound():
   return target_zoom < 4
 
 func _physics_process(delta):
-	smooth_zoom = lerp(smooth_zoom, target_zoom, ZOOM_SPEED * delta)
-	if smooth_zoom != target_zoom:
-		set_zoom(Vector2(smooth_zoom, smooth_zoom))
+  smooth_zoom = lerp(smooth_zoom, target_zoom, ZOOM_SPEED * delta)
+  if smooth_zoom != target_zoom:
+    set_zoom(Vector2(smooth_zoom, smooth_zoom))
 
-func _handle_zoom(event):
-  if (event.button_index == BUTTON_WHEEL_UP && is_within_lower_bound()):
+func _handle_zoom(_event):
+  if (Input.is_action_just_pressed('zoom_in') && is_within_lower_bound()):
     target_zoom -= ZOOM_SCALE
-  elif (event.button_index == BUTTON_WHEEL_DOWN && is_within_upper_bound()):
+  elif (Input.is_action_just_pressed('zoom_out') && is_within_upper_bound()):
      target_zoom += ZOOM_SCALE
 
 func _handle_camera_toggle():
@@ -47,8 +47,7 @@ func _handle_camera_toggle():
   locked = !locked
 
 func _input(event):
-  if event is InputEventMouseButton:
-    _handle_zoom(event)
+  _handle_zoom(event)
     
   if Input.is_action_pressed('camera_lock_toggle'):
     _handle_camera_toggle()

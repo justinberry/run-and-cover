@@ -4,11 +4,11 @@ class TweenDetacher:
   var target
   var tween
 
-  func _init(target, tween):
-    self.target = target
-    self.tween = tween
+  func _init(a_target, a_tween):
+    self.target = a_target
+    self.tween = a_tween
     
-  func _on_tween_complete(object, key):
+  func _on_tween_complete(_object, _key):
     print(self.target.get_children())
     self.target.remove_child(self.tween)
 
@@ -25,7 +25,7 @@ static func stop(target, tween):
 
   tween.stop_all()
 
-static func out(target, time, on_complete, on_complete_func_name):
+static func out(target, time, _on_complete, _on_complete_func_name):
   var tween = Tween.new()
   target.add_child(tween)
   tween.set_owner(target)
