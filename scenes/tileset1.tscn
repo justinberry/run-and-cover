@@ -11,7 +11,7 @@ z_as_relative = false
 texture = ExtResource( 1 )
 offset = Vector2( 0, -64 )
 region_enabled = true
-region_rect = Rect2( 7392, 0, 112, 132 )
+region_rect = Rect2( 7393, 0, 112, 132 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall1"]
 __meta__ = {
@@ -19,14 +19,14 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall1/StaticBody2D"]
-position = Vector2( 0.61, -62.8 )
+position = Vector2( 0.999999, -62 )
 polygon = PoolVector2Array( -55.8152, 30.2873, 0.288451, 63.4592, 55.8152, 30.2873, 0.288451, -1.44225 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="floor1" type="Sprite" parent="."]
-position = Vector2( 135.25, -64 )
+position = Vector2( 136, -64 )
 z_index = -99
 texture = ExtResource( 1 )
 region_enabled = true

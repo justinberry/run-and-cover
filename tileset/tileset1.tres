@@ -13,7 +13,7 @@ points = PoolVector2Array( -4.74502, 0.432278, 24.8583, 19.9698, -4.74502, 39.50
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, -64 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 7392, 0, 112, 132 )
+0/region = Rect2( 7393, 0, 112, 132 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 56, 66 )
 0/navigation_offset = Vector2( 56, 66 )
@@ -22,7 +22,7 @@ points = PoolVector2Array( -4.74502, 0.432278, 24.8583, 19.9698, -4.74502, 39.50
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 3 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 56.61, 3.2 )
+"shape_transform": Transform2D( 1, 0, 0, 1, 57, 4 )
 } ]
 0/z_index = 0
 1/name = "wall1"
