@@ -5,32 +5,57 @@
 [node name="Tileset1" type="Node2D"]
 position = Vector2( 58, -2 )
 
-[node name="wall1" type="Sprite" parent="."]
-position = Vector2( -1, 0 )
-z_as_relative = false
+[node name="grass_stone_wall" type="Sprite" parent="."]
+position = Vector2( -0.5, -37.2499 )
 texture = ExtResource( 1 )
-offset = Vector2( 0, -64 )
+offset = Vector2( 0, -28 )
 region_enabled = true
 region_rect = Rect2( 7393, 0, 112, 132 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="wall1"]
+[node name="StaticBody2D" type="StaticBody2D" parent="grass_stone_wall"]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall1/StaticBody2D"]
-position = Vector2( 0.999999, -62 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="grass_stone_wall/StaticBody2D"]
+position = Vector2( 0, -26.7501 )
 polygon = PoolVector2Array( -55.8152, 30.2873, 0.288451, 63.4592, 55.8152, 30.2873, 0.288451, -1.44225 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="floor1" type="Sprite" parent="."]
-position = Vector2( 136, -64 )
-z_index = -99
+[node name="stone_wall" type="Sprite" parent="."]
+position = Vector2( 112, -37 )
+z_as_relative = false
 texture = ExtResource( 1 )
+offset = Vector2( 0, -28 )
 region_enabled = true
-region_rect = Rect2( 7126, 0, 112, 132 )
+region_rect = Rect2( 7128, 0, 112, 132 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="stone_wall"]
+position = Vector2( -2, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="stone_wall/StaticBody2D"]
+position = Vector2( 2, -28 )
+polygon = PoolVector2Array( -55.8152, 30.2873, 0.288451, 63.4592, 55.8152, 30.2873, 0.288451, -1.44225 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="grass_stone_floor" type="Sprite" parent="."]
+position = Vector2( -2, 97 )
+z_index = -1
+z_as_relative = false
+texture = ExtResource( 1 )
+offset = Vector2( 0, -28 )
+region_enabled = true
+region_rect = Rect2( 7393, 0, 112, 132 )
+
+[node name="stone_floor" type="Sprite" parent="."]
+position = Vector2( 110, 97 )
+z_index = -1
+z_as_relative = false
+texture = ExtResource( 1 )
+offset = Vector2( 0, -28 )
+region_enabled = true
+region_rect = Rect2( 7126, 0, 112, 132 )
