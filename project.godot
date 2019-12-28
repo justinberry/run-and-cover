@@ -61,4 +61,5 @@ camera_lock_toggle={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.156863, 0.733333, 0.847059, 1 )
 environment/default_environment="res://default_env.tres"
